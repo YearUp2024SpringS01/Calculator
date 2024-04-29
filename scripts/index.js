@@ -12,6 +12,8 @@ const number2Field = document.getElementById("number2Field");
 
 //output
 const answerField = document.getElementById("answerField");
+const messagePara = document.getElementById("messagePara");
+
 
 window.onload = init;
 
@@ -31,12 +33,22 @@ function onAddBtnClicked(){
     let num1 = Number(number1Field.value);
     let num2 = Number(number2Field.value);
 
+    // check to see if user inputs were invalid
+    if (isNaN(num1) || isNaN(num2)) {
+        answerField.value = "";
+        messagePara.innerHTML = 
+            "One or more of your input values are invalid";
+            return; // exit the function
+    }
+
     //compute the values I don't know
     let answer = num1 + num2;
 
 
     //display the result.
     answerField.value = answer;
+
+    messagePara.innerHTML = "";
     
 }
 
